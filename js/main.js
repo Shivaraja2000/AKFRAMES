@@ -1,0 +1,226 @@
+(function ($) {
+    "use strict";
+
+    // Initiate the wowjs
+    new WOW().init();
+
+
+    // Spinner
+    var spinner = function () {
+        setTimeout(function () {
+            if ($('#spinner').length > 0) {
+                $('#spinner').removeClass('show');
+            }
+        }, 1);
+    };
+    spinner();
+
+
+    // Sticky Navbar
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.sticky-top').addClass('shadow-sm').css('top', '0px');
+        } else {
+            $('.sticky-top').removeClass('shadow-sm').css('top', '-100px');
+        }
+    });
+    
+    
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
+    });
+    $('.back-to-top').click(function () {
+        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        return false;
+    });
+
+
+    // Header carousel
+    $(".header-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1500,
+        items: 1,
+        dots: true,
+        loop: true,
+        nav : true,
+        navText : [
+            '<i class="bi bi-chevron-left"></i>',
+            '<i class="bi bi-chevron-right"></i>'
+        ]
+    });
+
+
+    // Testimonials carousel
+    $(".testimonial-carousel").owlCarousel({
+        autoplay: true,
+        smartSpeed: 1000,
+        margin: 24,
+        dots: false,
+        loop: true,
+        nav : true,
+        navText : [
+            '<i class="bi bi-arrow-left"></i>',
+            '<i class="bi bi-arrow-right"></i>'
+        ],
+        responsive: {
+            0:{
+                items:1
+            },
+            992:{
+                items:2
+            }
+        }
+    });
+    
+})(jQuery);
+
+$(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+        items: 3, // Number of items displayed
+        loop: true, // Enable looping
+        margin: 10, // Space between items
+        autoplay: true, // Enable autoplay
+        autoplayTimeout: 1000, // Time between transitions (3 seconds)
+        autoplayHoverPause: true, // Pause on hover
+         //nav: true,Show next/prev buttons
+        dots: true, // Show pagination dots
+
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
+
+
+});
+
+
+
+// lightbox gallery 
+
+
+
+$(document).ready(function(){
+
+    $('.buttons').click(function(){
+
+        $(this).addClass('active').siblings().removeClass('active');
+
+        var filter = $(this).attr('data-filter')
+
+        if(filter == 'all'){
+            $('.image').show(400);
+        }else{
+            $('.image').not('.'+filter).hide(200);
+            $('.image').filter('.'+filter).show(400);
+        }
+
+    });
+
+    $('.gallery').magnificPopup({
+
+        delegate:'a',
+        type:'image',
+        gallery:{
+            enabled:true
+        }
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+// light gallery
+
+$(document).ready(function(){
+
+    $('.buttons').click(function(){
+
+        $(this).addClass('active').siblings().removeClass('active');
+
+        var filter = $(this).attr('data-filter')
+
+        if(filter == 'all'){
+            $('.image').show(400);
+        }else{
+            $('.image').not('.'+filter).hide(200);
+            $('.image').filter('.'+filter).show(400);
+        }
+
+    });
+
+    $('.gallery').magnificPopup({
+
+        delegate:'a',
+        type:'image',
+        gallery:{
+            enabled:true
+        }
+
+    });
+
+});
+
+
+
+
+
+// order functions 
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Initialize LightGallery
+    lightGallery(document.getElementById("lightgallery"));
+
+    // Order Now Button Click Event
+    document.querySelectorAll(".order-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            let imageName = this.getAttribute("data-image");
+            let phoneNumber = "918524960408"; // Replace with your WhatsApp number
+            let message = `Hello, I want to order this product: ${imageName}`;
+            let whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            window.open(whatsappURL, "_blank");
+        });
+    });
+    $(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    loop:true,            // makes it infinite
+    margin:10,            // space between items
+    nav:true,             // show next/prev buttons
+    autoplay:true,        // enable auto run
+    autoplayTimeout:3000, // 3 seconds per slide
+    autoplayHoverPause:true, // pause on hover
+    responsive:{
+      0:{
+        items:1
+      },
+      600:{
+        items:2
+      },
+      1000:{
+        items:3
+      }
+    }
+  });
+});
+
+});
